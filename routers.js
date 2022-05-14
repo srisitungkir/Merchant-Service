@@ -12,4 +12,7 @@ module.exports = function(app) {
     app.route('/account/:name')
         .get(myjson.allmerchantinformation);
 
+    app.route('/account/:id')
+        .get(myjson.allmerchantinformation);
+
 };

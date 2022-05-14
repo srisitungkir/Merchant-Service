@@ -29,3 +29,15 @@ exports.allmerchantinformation = function(req, res) {
         }
     });
 };
+
+//menampilkan data merchant information berdasarkan id
+exports.allmerchantinformation = function(req, res) {
+    let id = req.params.id;
+    connection.query('SELECT * FROM merchant_information WHERE id = ?', (id), function(error, rows, fileds) {
+        if(error) {
+            console.log(error);
+        } else {
+            response.ok(rows, res);
+        }
+    });
+};
