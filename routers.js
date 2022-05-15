@@ -21,4 +21,8 @@ module.exports = function(app) {
     app.route('/deleteaccount/:id')
         .delete(myjson.deleteAccount);
 
+    app.route('/addproduct')
+        .post(myjson.addProduct);
+
+
 };

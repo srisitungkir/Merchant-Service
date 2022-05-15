@@ -54,23 +54,39 @@ exports.addAccount = function(req, res) {
     connection.query(`INSERT INTO merchant_information (id, password, name, address, join_date, phone_number) VALUES (?, ?, ?, ?, ?, ?)`, (id, password, name, address, join_date, phone_number),
     function(error, rows, fields) {
         if(error) {
-            console.log(errpr);
+            console.log(error);
         } else {
             response.ok("Seuccess add account", res)
         }
     });
+};
 
-    //menghapus data merchant information berdasarkan id
-    exports.deleteAccount = function(req, res) {
-        let id = req.body.id;
-        connection.query(`DELETE FROM merchant_service WHERE id = ?`, (id), function (error, rows, fields) {
-            if (error) {
-                console.log(error);
-            } else {
-                response.ok("Data have deleted", res)
-            }
-        });
-    };
+//menghapus data merchant information berdasarkan id
+exports.deleteAccount = function(req, res) {
+    let id = req.body.id;
+    connection.query(`DELETE FROM merchant_service WHERE id = ?`, (id), function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Data have deleted", res)
+        }
+    });
+};
 
+//menambahkan data product
+exports.addProduct = function(req, res) {
+    let id = req.body.id;
+    let name = req.body.name;
+    let quantity = req.body.quantity;
+    let price = req.body.price;
+
+    connection.query(`INSERT INTO product_information (id, name, quantity, price) VALUES (?, ?, ?, ?)`, (id, name, quantity, price),
+    function(error, rows, fields) {
+        if(error) {
+            console.log(error);
+        } else {
+            response.ok("Success add product", res)
+        }
+    });
 
 };
