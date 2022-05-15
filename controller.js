@@ -43,7 +43,7 @@ exports.allmerchantinformation = function(req, res) {
 };
 
 //menambahkan data merchant information
-exports.addaccount = function(req, res) {
+exports.addAccount = function(req, res) {
     let id = req.body.id;
     let password = req.body.password;
     let name = req.body.name;
@@ -59,5 +59,18 @@ exports.addaccount = function(req, res) {
             response.ok("Seuccess add account", res)
         }
     });
+
+    //menghapus data merchant information berdasarkan id
+    exports.deleteAccount = function(req, res) {
+        let id = req.body.id;
+        connection.query(`DELETE FROM merchant_service WHERE id = ?`, (id), function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data have deleted", res)
+            }
+        });
+    };
+
 
 };

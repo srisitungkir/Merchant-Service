@@ -15,6 +15,10 @@ module.exports = function(app) {
     app.route('/account/:id')
         .get(myjson.allmerchantinformation);
 
-    
-        
+    app.route('/addaccount')
+        .post(myjson.addAccount);
+
+    app.route('/deleteaccount/:id')
+        .delete(myjson.deleteAccount);
+
 };
