@@ -22,5 +22,5 @@ npm body-parser
 
 - menjalankan server
 
-node <nama file>
+node (nama file)
 
