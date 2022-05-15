@@ -30,4 +30,9 @@ module.exports = function(app) {
     app.route('/changeproduct/:id')
         .put(myjson.changeProduct);
 
+    app.route('/product')
+        .get(myjson.allproductinformation)
+
+    app.route('/account/:id')
+        .get(myjson.allproductinformation);
 };

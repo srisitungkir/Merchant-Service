@@ -120,3 +120,26 @@ exports.changeProduct = function(req, res) {
     });
 
 };
+
+//menampilkan data product information
+exports.allproductinformation = function(req, res) {
+    connection.query(`SELECT * FROM product_information`, function(error, rows, fields) {
+        if(error) {
+            console.log(error);
+        } else {
+            response.ok(rows, res)
+        }
+    });
+};
+
+//menampilkan data product information berdasarkan id
+exports.allproductinformation = function(req, res) {
+    let id = req.params.id;
+    connection.query(`SELECT * FROM product_information WHERE id = ?`, (id), function(error, rows, fields) {
+        if(error) {
+            console.log(error);
+        } else {
+            response.ok(rows, res);
+        }
+    });
+};
