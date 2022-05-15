@@ -90,3 +90,33 @@ exports.addProduct = function(req, res) {
     });
 
 };
+
+//menghapus data product berdasarkan id
+exports.deleteAccount = function(req, res) {
+    let id = req.body.id;
+    connection.query(`DELETE FROM product_information WHERE id = ?`, (id), function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Data product has deleted", res)
+        }
+    });
+};
+
+//mengubah data product berdasarkan id
+exports.changeProduct = function(req, res) {
+    let id = req.body.id;
+    let name = req.body.name;
+    let quantity = req.body.quantity;
+    let price = req.body.price;
+
+    connection.query(`UPDATE product_information SET name=?, quantity=?, price=? WHERE id=?`, (name, quantity, price),
+    function(error, rows, fields) {
+        if(error) {
+            console.log(error);
+        } else {
+            response.ok("Product have changed", res)
+        }
+    });
+
+};
